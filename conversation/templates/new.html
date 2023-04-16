@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}New Conversation{% endblock title %}
+
+{% block content %}
+<h1 class="mb-6 text-3xl">New Conversation</h1>
+
+<form method="post" action=".">
+    {% csrf_token %}
+    <textarea name="content" cols="40" rows="10" class="w-full py-4 px-6 rounded-x1 border" id="id_content"></textarea>
+    {% if item.content %}
+    <p class="text-gray-700">
+        <strong class="text-gray-500">Content:</strong><br>
+        {{item.content}}
+    </p>
+    {% endif %}
+    {% if form.errors or form.non_field_errors %}
+    <div class="mb-3 p-6 bg-red-100 rounded-x1">
+        {% for field in form %}
+        {{field.errors}}
+        {% endfor %}
+        {{form.non_field_errors}}
+    </div>
+    {% endif %}
+    <button class="mt-6 py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Send</button>
+
+</form>
+
+{% endblock content %}
