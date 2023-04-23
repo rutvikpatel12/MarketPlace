@@ -11,7 +11,7 @@
         {% for item in items %}
         <div>
             <a href="{% url 'item:detail' item.id %}">
-                <div>
+                <div style="width:280px;">
                     <img src="{{item.image.url}}" class="rounded-b-xl">
                 </div>
                 <div class="p-6 bg-white rounded-b-xl">
@@ -40,3 +40,5 @@
         {% endfor %}
 
         {% endblock content %}
+    </div>
+</div>

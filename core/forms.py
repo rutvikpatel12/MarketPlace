@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+from .models import *
+
 class LoginForm(AuthenticationForm):
     username=forms.CharField(widget=forms.TextInput(attrs={
         'placeholder':'Your username',
@@ -33,3 +35,27 @@ class SignupForm(UserCreationForm):
         'placeholder':'Repeat password',
         'class':'w-full py-4 px-6 rounded-xl'
         }))
+
+INPUT_CLASSES = 'w-full py-4 px-6 rounded-x1 border'
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model=contact
+        fields=('fname','lname','email','contact','message',)
+        widgets={
+            'fname':forms.TextInput(attrs={
+                'class':INPUT_CLASSES
+            }),
+            'lname':forms.TextInput(attrs={
+                'class':INPUT_CLASSES
+            }),
+            'email':forms.EmailInput(attrs={
+                'class':INPUT_CLASSES
+            }),
+            'contact':forms.NumberInput(attrs={
+                'class':INPUT_CLASSES
+            }),
+            'message':forms.Textarea(attrs={
+                'class':INPUT_CLASSES
+            })
+        }
