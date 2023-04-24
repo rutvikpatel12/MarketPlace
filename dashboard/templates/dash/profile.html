@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+    <h1 class="mb-6 text-3xl font-bold">Profile</h1>
+
+    <form method="POST" action=".">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="inline-block mb-2">First Name</label><br>
+            <input type="text" name="fname" class="INPUT_CLASSES" value="{{user.first_name}}" id="fname">
+        </div>
+        <div class="mb-3">
+            <label class="inline-block mb-2">Last Name</label><br>
+            <input type="text" name="lname" class="INPUT_CLASSES" value="{{user.last_name}}" id="lname">
+        </div>
+        <div class="mb-3">
+            <label class="inline-block mb-2">Username</label><br>
+            <input type="text" name="uname" class="INPUT_CLASSES" value="{{request.user}}" id="uname">
+        </div>
+        <div class="mb-3">
+            <label class="inline-block mb-2">Email</label><br>
+            <input type="text" name="email" class="INPUT_CLASSES" value="{{user.email}}" id="email">
+        </div>
+
+        <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Update</button>
+    </form>
+</div>
+{% endblock content %}

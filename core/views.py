@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate,login,logout
 from item.models import *
 from .forms import *
 
+from django.contrib.auth.models import User
+
 from .forms import SignupForm
 
 def index(request):

@@ -15,5 +15,6 @@ urlpatterns = [
     path('signup/',views.signin,name='signup'),
     path('login/',auth_views.LoginView.as_view(template_name='login.html',authentication_form=LoginForm),name='login'),
     path('signout/',views.signout,name='signout'),
+    # path('profile/',views.profile,name='profile'),
     
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
