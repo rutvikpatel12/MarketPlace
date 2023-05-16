@@ -5,16 +5,16 @@
 {% block content %}
 
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Newest items</h2>
+    <h2 class="mb-12 text-2xl text-center ff">Newest items</h2>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-4 gap-2">
         {% for item in items %}
-        <div>
+        <div class="h-64 w-72">
             <a href="{% url 'item:detail' item.id %}">
                 <div>
-                    <img src="{{item.image.url}}" class="rounded-t-xl">
+                    <img src="{{item.image.url}}" class="rounded-t-xl w-full h-48 w-48">
                 </div>
-                <div class="p-6 bg-white rounded-b-xl">
+                <div class="p-4 bg-white rounded-b-xl">
                     <h2 class="text-2xl">{{item.name}}</h2>
                     <p class="text-gray-500">Price: {{item.price}}</p>
                 </div>
@@ -25,18 +25,17 @@
 </div>
 
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Category</h2>
+    <h2 class="mb-12 text-2xl text-center ff">Category</h2>
 
     <div class="grid grid-cols-3 gap-3">
         {% for category in categories %}
         <div>
-            <a href="#">
-                <div class="p-6 bg-white rounded-b-xl">
-                    <h2 class="text-2xl">{{category.name}}</h2>
-                    <h2 class="text-gray-500">{{category.items.count}} items</h2>
-                </div>
-            </a>
+            <div class="p-6 bg-white rounded-b-xl">
+                <h2 class="text-2xl">{{category.name}}</h2>
+                <h2 class="text-gray-500">{{category.items.count}} items</h2>
+            </div>
         </div>
         {% endfor %}
-
-        {% endblock content %}
+    </div>
+</div>
+{% endblock content %}
